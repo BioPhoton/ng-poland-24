@@ -1,28 +1,24 @@
-import { Component, input, output } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {Component, input, OnInit, output} from '@angular/core';
 
-import { TMDBMovieModel } from '../../shared/model/movie.model';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
+import {TMDBMovieModel} from '../../shared/model/movie.model';
+import {MovieCardComponent} from '../movie-card/movie-card.component';
 
 @Component({
   selector: 'movie-list',
   standalone: true,
-  imports: [MovieCardComponent, RouterLink],
+  imports: [MovieCardComponent],
   template: `
-    @for (movie of movies(); track movie.id) {
-      <movie-card
-        [index]="$index"
-        [routerLink]="['/movie', movie.id]"
-        [loading]="favoritesLoading().has(movie.id)"
-        [favorite]="favoriteMovieIds().has(movie.id)"
-        (favoriteChange)="favoriteToggled.emit(movie)"
-        [movie]="movie"
-      />
-    } @empty {
-      <div class="no-movies">
-        There are no movies to show
-      </div>
-    }
+      @for (movie of movies(); track movie.id) {
+        <movie-card
+          [index]="$index"
+          [loading]="favoritesLoading().has(movie.id)"
+          [movie]="movie"
+        />
+      } @empty {
+        <div class="no-movies">
+          There are no movies to show
+        </div>
+      }
   `,
   styles: `
     :host {
@@ -37,8 +33,9 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 })
 export class MovieListComponent {
   movies = input.required<TMDBMovieModel[]>();
-  favoriteMovieIds = input<Set<string>>(new Set<string>([]));
   favoritesLoading = input(new Set<string>());
+  constructor() {
+    console.info('💧MovieListComponent hydrated');
 
-  favoriteToggled = output<TMDBMovieModel>();
+  }
 }

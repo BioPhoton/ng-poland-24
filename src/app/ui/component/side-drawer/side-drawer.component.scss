@@ -1,12 +1,9 @@
-@import '../../token/mixins/media';
-@import "../../token/mixins/flex";
-
 :host {
   display: contents;
 }
 .side-drawer {
   position: fixed;
-  @include d-flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 250px;
@@ -21,10 +18,10 @@
     transform var(--theme-anim-duration-short)
     var(--theme-anim-easing-easeOut);
   box-shadow: var(--theme-shadow-16);
-  background-color: var(--palette-background-paper);
+  background-color: #fff;
   left: -250px;
 
-  @include isDesktop {
+  @media screen and (min-width: 1298px) {
     box-shadow: unset;
     background-color: var(--palette-background-default);
   }

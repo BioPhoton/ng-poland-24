@@ -32,7 +32,7 @@
 
     <a
       class="navigation--link"
-      [routerLink]="['/list', 'popular']"
+      [routerLink]="['/list', 'upcoming']"
       routerLinkActive="active"
     >
       <div class="navigation--menu-item">
@@ -42,7 +42,7 @@
 
     <a
       class="navigation--link"
-      [routerLink]="['/list', 'top_rated']"
+      [routerLink]="['/list', 'top-rated']"
       routerLinkActive="active"
     >
       <div class="navigation--menu-item">
@@ -96,6 +96,6 @@
     </div>
   </div>
   <div class="content">
-    <ng-content></ng-content>
+    <router-outlet></router-outlet>
   </div>
 </div>

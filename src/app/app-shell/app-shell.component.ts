@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 import {DarkModeToggleComponent} from '../ui/component/dark-mode-toggle/dark-mode-toggle.component';
 import {HamburgerButtonComponent} from '../ui/component/hamburger-button/hamburger-button.component';
@@ -16,6 +16,7 @@ import {SideDrawerComponent} from '../ui/component/side-drawer/side-drawer.compo
     SideDrawerComponent,
     RouterLinkActive,
     RouterLink,
+    RouterOutlet,
     HamburgerButtonComponent,
     SearchBarComponent,
     FormsModule,

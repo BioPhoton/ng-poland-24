@@ -4,28 +4,24 @@ import {
   computed,
   ElementRef,
   inject,
-  input,
+  input, model,
   output,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
 import { TMDBMovieModel } from '../../shared/model/movie.model';
-import { TiltDirective } from '../../shared/tilt.directive';
 import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.component';
-import { MovieImagePipe } from '../movie-image.pipe';
 
 @Component({
   selector: 'movie-card',
   standalone: true,
-  imports: [StarRatingComponent, TiltDirective, UpperCasePipe, MovieImagePipe],
+  imports: [StarRatingComponent, UpperCasePipe],
   template: `
     <div class="movie-card">
       <img
-        tilt
-        [tiltDegree]="5"
         class="movie-image"
         [alt]="movie().title"
-        [src]="movie().poster_path | movieImage: 780"
+        [src]="'https://image.tmdb.org/t/p/w342/'+movie().poster_path"
       />
       <div class="movie-card-content">
         <div class="movie-card-title">{{ movie().title | uppercase }}</div>
@@ -38,7 +34,7 @@ import { MovieImagePipe } from '../movie-image.pipe';
         [class.loading]="loading()"
         [class.is-favorite]="favorite()"
         (click)="
-          $event.stopPropagation(); $event.preventDefault(); toggleFavorite()
+          $event.stopPropagation(); $event.preventDefault(); favorite.set(!favorite())
         "
       >
         @if (favorite()) {
@@ -47,9 +43,6 @@ import { MovieImagePipe } from '../movie-image.pipe';
           Please like me
         }
       </button>
-      @for (item of workItems(); track $index) {
-        <div></div>
-      }
     </div>
   `,
   styles: `
@@ -90,14 +83,10 @@ import { MovieImagePipe } from '../movie-image.pipe';
 })
 export class MovieCardComponent {
   index = input.required<number>();
-  work = input(250);
-  workItems = computed(() => new Array(this.work()).fill(null));
-
   movie = input.required<TMDBMovieModel>();
   loading = input(false);
 
-  favorite = input(false);
-  favoriteChange = output<boolean>();
+  favorite = model(false);
 
   elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
@@ -111,7 +100,4 @@ export class MovieCardComponent {
     });
   }
 
-  toggleFavorite() {
-    this.favoriteChange.emit(!this.favorite());
-  }
 }

@@ -1,12 +1,12 @@
-@import "../../token/mixins/flex";
-
 :host {
   display: contents;
 }
 
 .form {
   position: relative;
-  @include d-flex-vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: var(--theme-shadow-1);
   background-color: var(--palette-secondary-dark);
   border: 1px solid var(--palette-secondary-main);

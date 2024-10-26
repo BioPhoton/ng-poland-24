@@ -1,7 +1,6 @@
-@import "../../token/mixins/flex";
-
 :host {
-  @include d-flex;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   align-self: center;
   justify-content: space-around;
@@ -12,6 +11,7 @@
   width: 100%;
   height: 4px;
   margin: 2px 0;
+  background: rebeccapurple;
   border-radius: 4px;
-  background-color: var(--palette-secondary-main);
+  background-color: #B80040FF;
 }

@@ -1,16 +1,15 @@
+
 .tooltip {
   position: absolute;
-
   visibility: hidden;
   width: max-content;
   font-size: var(--text-sm);
-  background-color: var(--palette-primary-light);
-  color: var(--palette-primary-contrast-text);
+  background-color: #43C6B4FF;
+  color: #000000DD;
   text-align: center;
-  border-radius: var(--theme-borderRadius-sm);
+  border-radius: 3px;
   padding: 1rem;
-  z-index: var(--theme-tooptip-zIndex);
-  transition: visibility var(--theme-anim-duration-short) var(--theme-anim-easing-easeOut);
+  z-index: 1300;
 }
 
 .tooltip::after {
@@ -21,5 +20,5 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: var(--palette-primary-light) transparent transparent transparent;
+  border-color: #67EEDCFF transparent transparent transparent;
 }
