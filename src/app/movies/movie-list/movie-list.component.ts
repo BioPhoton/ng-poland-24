@@ -7,18 +7,17 @@ import {MovieCardComponent} from '../movie-card/movie-card.component';
   selector: 'movie-list',
   standalone: true,
   imports: [MovieCardComponent],
-  template: `
-      @for (movie of movies(); track movie.id) {
-        <movie-card
-          [index]="$index"
-          [loading]="favoritesLoading().has(movie.id)"
-          [movie]="movie"
-        />
-      } @empty {
-        <div class="no-movies">
-          There are no movies to show
-        </div>
-      }
+  template: ` @for (movie of movies(); track movie.id) {
+    <movie-card
+      [index]="$index"
+      [loading]="favoritesLoading().has(movie.id)"
+      [movie]="movie"
+    />
+  } @empty {
+    <div class="no-movies">
+      There are no movies to show
+    </div>
+  }
   `,
   styles: `
     :host {

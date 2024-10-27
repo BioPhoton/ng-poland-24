@@ -10,7 +10,6 @@ import {SideDrawerComponent} from '../ui/component/side-drawer/side-drawer.compo
 @Component({
   selector: 'app-shell',
   templateUrl: './app-shell.component.html',
-  styleUrls: ['./app-shell.component.scss'],
   standalone: true,
   imports: [
     SideDrawerComponent,

@@ -5,20 +5,20 @@ import {MovieListComponent} from '../movie-list/movie-list.component';
 import response from '../../data/movies-mock.json';
 
 @Component({
-  selector: 'movie-upcoming-page',
+  selector: 'app-shell-page',
   template: `
-    <h1>Hydrate never</h1>
-    @defer (hydrate on interaction; prefetch on timer(4s)) {
+    <h1>App Shell</h1>
+    @defer (hydrate on interaction;) {
       <movie-list [movies]="movies" />
     } @placeholder {
       <div class="no-movies">
-        There are no movies to show
+        There are no movies to show.
       </div>
     }
   `,
   standalone: true,
   imports: [MovieListComponent],
 })
-export class MovieUpcomingPageComponent {
+export class AppShellListComponent {
   movies: TMDBMovieModel[] = response.results as unknown as TMDBMovieModel[];
 }

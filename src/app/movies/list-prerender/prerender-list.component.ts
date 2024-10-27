@@ -5,14 +5,14 @@ import {MovieListComponent} from '../movie-list/movie-list.component';
 import response from '../../data/movies-mock.json';
 
 @Component({
-  selector: 'movie-list-page',
+  selector: 'prerender-page',
   template: `
-    <h1>Top Rated</h1>
+    <h1>Prerenderd</h1>
     <movie-list [movies]="movies" />
   `,
   standalone: true,
   imports: [MovieListComponent],
 })
-export class MovieListPageComponent {
+export class PrerenderListComponent {
   movies: TMDBMovieModel[] = response.results as unknown as TMDBMovieModel[];
 }

@@ -1,11 +1,9 @@
 import { UpperCasePipe } from '@angular/common';
 import {
   Component,
-  computed,
   ElementRef,
   inject,
   input, model,
-  output,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 
@@ -19,7 +17,7 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
   template: `
     <div class="movie-card">
       <img
-        class="movie-image"
+        class="movie-image aspectRatio-2-3"
         [alt]="movie().title"
         [src]="'https://image.tmdb.org/t/p/w342/'+movie().poster_path"
       />
@@ -33,9 +31,7 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
         class="favorite-indicator"
         [class.loading]="loading()"
         [class.is-favorite]="favorite()"
-        (click)="
-          $event.stopPropagation(); $event.preventDefault(); favorite.set(!favorite())
-        "
+        (click)="favorite.set(!favorite())"
       >
         @if (favorite()) {
           I like it
@@ -46,11 +42,6 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
     </div>
   `,
   styles: `
-    .movie-card {
-      transition: box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-      transform-origin: bottom;
-    }
-
     :host.movie-card--hover {
       .movie-card {
         .movie-image {
@@ -60,24 +51,6 @@ import { StarRatingComponent } from '../../ui/pattern/star-rating/star-rating.co
 
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
       }
-    }
-
-    .movie-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-      transform: scale(0.97);
-    }
-
-    .movie-card-content {
-      text-align: center;
-      padding: 1.5rem 3rem;
-      font-size: 1.5rem;
-    }
-
-    .movie-card-title {
-      font-size: 2rem;
     }
   `,
 })

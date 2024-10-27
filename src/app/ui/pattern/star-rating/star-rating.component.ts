@@ -5,6 +5,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import {TooltipComponent} from '../../component/tooltip/tooltip.component';
 
 const range = 10;
 const numStars = 5;
@@ -13,9 +14,9 @@ const starsArray: number[] = new Array(numStars).fill(1);
 @Component({
   selector: 'ui-star-rating',
   template: `
-    <span class="tooltip">
+    <ui-tooltip>
       {{ tooltipText }}
-    </span>
+    </ui-tooltip>
     <div class="stars">
       <span
         *ngFor="let fill of stars"
@@ -29,14 +30,11 @@ const starsArray: number[] = new Array(numStars).fill(1);
     </div>
     <div class="rating-value" *ngIf="showRating">{{ rating }}</div>
   `,
-  styleUrls: [
-    'star-rating.component.scss',
-    '../../component/tooltip/_tooltip.scss',
-  ],
+  styleUrls: ['star-rating.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.Emulated,
   standalone: true,
-  imports: [NgFor, NgClass, NgIf],
+  imports: [NgFor, NgClass, NgIf, TooltipComponent],
 })
 export class StarRatingComponent {
   range = range;

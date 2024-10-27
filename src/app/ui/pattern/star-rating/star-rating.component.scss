@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-
-  &:hover .tooltip {
+  &:hover ui-tooltip {
     visibility: visible;
   }
 }

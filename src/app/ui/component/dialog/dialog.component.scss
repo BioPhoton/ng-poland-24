@@ -31,7 +31,7 @@ dialog {
   }
 
   &.video {
-    aspect-ratio: var(--theme-aspectRatio-16-9);
+    aspect-ratio: 16/9;
     width: 90%;
   }
 

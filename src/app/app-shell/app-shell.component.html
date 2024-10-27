@@ -16,47 +16,59 @@
   </a>
   <nav class="navigation">
 
-    <h3 class="navigation--headline">User Menu</h3>
-
-    <a
-      class="navigation--link"
-      [routerLink]="['/my-movies']"
-      routerLinkActive="active"
-    >
-      <div class="navigation--menu-item">
-        My Movies
-      </div>
-    </a>
-
     <h3 class="navigation--headline">Discover</h3>
-
     <a
       class="navigation--link"
-      [routerLink]="['/list', 'upcoming']"
+      [routerLink]="['/csr']"
       routerLinkActive="active"
     >
       <div class="navigation--menu-item">
-        Popular
+        CSR
       </div>
     </a>
-
     <a
       class="navigation--link"
-      [routerLink]="['/list', 'top-rated']"
+      [routerLink]="['/ssr']"
       routerLinkActive="active"
     >
       <div class="navigation--menu-item">
-        Top Rated
+        SSR
       </div>
     </a>
-
     <a
       class="navigation--link"
-      [routerLink]="['/list', 'upcoming']"
+      [routerLink]="['/prerender']"
       routerLinkActive="active"
     >
       <div class="navigation--menu-item">
-        Upcoming
+        Prerender
+      </div>
+    </a>
+    <a
+      class="navigation--link"
+      [routerLink]="['/app-shell']"
+      routerLinkActive="active"
+    >
+      <div class="navigation--menu-item">
+        App Shell
+      </div>
+    </a>
+    <a
+      class="navigation--link"
+      [routerLink]="['/pr-1']"
+      routerLinkActive="active"
+    >
+      <div class="navigation--menu-item">
+        &#64;defer(on interaction)
+      </div>
+    </a>
+    <a
+      class="navigation--link"
+      [routerLink]="['/pr-2']"
+      routerLinkActive="active"
+    >
+      <div class="navigation--menu-item">
+        &#64;defer(hydrate on interaction)
       </div>
     </a>
 
@@ -91,8 +103,8 @@
     >
     </ui-hamburger-button>
     <div class="ui-toolbar--widget-container">
-      <ui-search-bar></ui-search-bar>
-      <ui-dark-mode-toggle></ui-dark-mode-toggle>
+      @defer(hydrate on interaction){<ui-search-bar></ui-search-bar>}
+      @defer(hydrate on interaction){<ui-dark-mode-toggle></ui-dark-mode-toggle>}
     </div>
   </div>
   <div class="content">

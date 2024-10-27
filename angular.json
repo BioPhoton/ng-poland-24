@@ -19,6 +19,7 @@
             "outputPath": "dist/ng-poland-24",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "namedChunks": true,
             "polyfills": [
               "zone.js"
             ],
@@ -53,7 +54,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,

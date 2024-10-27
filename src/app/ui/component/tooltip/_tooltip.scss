@@ -1,4 +1,4 @@
-
+:host,
 .tooltip {
   position: absolute;
   visibility: hidden;
@@ -12,6 +12,7 @@
   z-index: 1300;
 }
 
+:host::after,
 .tooltip::after {
   content: '';
   position: absolute;

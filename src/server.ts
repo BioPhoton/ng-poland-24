@@ -4,9 +4,9 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import express from 'express';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import express, {Request, NextFunction, RequestHandler} from 'express';
+import {dirname, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -27,6 +27,23 @@ const angularApp = new AngularNodeAppEngine();
  */
 
 /**
+ * Middleware to delay a specific file
+ */
+function delaySpecificFile(matcher: string | string[] = '.js', delay = 2000) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const matchers = typeof matcher === "string" ? [matcher] : matcher;
+    if (matchers.some(match => req.url.includes(match))) {
+      console.log('delaying response for', req.url, `by ${delay}ms`);
+      setTimeout(next, delay);
+    } else {
+      next();
+    }
+  }
+}
+
+app.use(delaySpecificFile(['component']) as unknown as RequestHandler);
+
+/**
  * Serve static files from /browser
  */
 app.get(
@@ -39,7 +56,7 @@ app.get(
       for (const [key, value] of headers) {
         res.setHeader(key, value);
       }
-    },
+    }
   }),
 );
 
@@ -49,9 +66,9 @@ app.get(
 app.get('**', (req, res, next) => {
   angularApp
     .render(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => {
+      return response ? writeResponseToNodeResponse(response, res) : next()
+    })
     .catch(next);
 });
 
