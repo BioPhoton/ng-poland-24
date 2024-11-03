@@ -8,13 +8,7 @@ import response from '../../data/movies-mock.json';
   selector: 'app-shell-page',
   template: `
     <h1>App Shell</h1>
-    @defer (hydrate on interaction;) {
-      <movie-list [movies]="movies" />
-    } @placeholder {
-      <div class="no-movies">
-        There are no movies to show.
-      </div>
-    }
+    <movie-list ngSkipHydration [movies]="movies"/>
   `,
   standalone: true,
   imports: [MovieListComponent],

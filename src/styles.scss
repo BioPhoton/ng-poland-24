@@ -868,11 +868,27 @@ movie-list:has(.movie-list-title) {
 
 /*un hydrated*/
 [ngh] {
-  background-color: #ddd !important;
-  opacity: 0.95;
+  position: relative;
 }
 
-/*jsaction*/
+[ngh]::after {
+  content: "😴";
+  font-size: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2px;
+}
+
 [jsaction] {
-  border: 1px solid red  !important;
+  position: relative;
+}
+
+[jsaction]::after {
+  content: "👂";
+  font-size: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2px;
 }

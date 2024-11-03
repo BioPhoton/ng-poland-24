@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {TMDBMovieModel} from '../../shared/model/movie.model';
 import {MovieListComponent} from '../movie-list/movie-list.component';
 import response from '../../data/movies-mock.json';
-import {MovieListPlaceholderComponent} from '../movie-list/movie-list.placeholder.component';
 
 @Component({
   selector: 'pr-2-page',
@@ -13,7 +12,7 @@ import {MovieListPlaceholderComponent} from '../movie-list/movie-list.placeholde
     }
   `,
   standalone: true,
-  imports: [MovieListComponent, MovieListPlaceholderComponent],
+  imports: [MovieListComponent],
 })
 export class Prerender2ListComponent {
   movies: TMDBMovieModel[] = response.results as unknown as TMDBMovieModel[];

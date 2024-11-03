@@ -8,13 +8,7 @@ import response from '../../data/movies-mock.json';
   selector: 'crs-page',
   template: `
     <h1>CSR</h1>
-    @defer (hydrate on interaction;) {
-      <movie-list [movies]="movies" />
-    } @placeholder {
-      <div class="no-movies">
-        There are no movies to show.
-      </div>
-    }
+    <movie-list [movies]="movies"/>
   `,
   standalone: true,
   imports: [MovieListComponent],
