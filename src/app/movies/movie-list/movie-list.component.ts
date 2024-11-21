@@ -34,7 +34,21 @@ export class MovieListComponent {
   movies = input.required<TMDBMovieModel[]>();
   favoritesLoading = input(new Set<string>());
   constructor() {
-    console.info('💧MovieListComponent hydrated');
+    this.evilClientSideReferenceOfBrowserApi()
+    this.evilClientSideCallOfBrowserApi()
+  }
 
+  evilClientSideCallOfBrowserApi() {
+    const  d = document.createElement('div');
+    d.addEventListener('click', () => {
+      console.log('Click event on div');
+    });
+    document.body.appendChild(d);
+    d.click();
+  }
+  evilClientSideReferenceOfBrowserApi() {
+    console.info('💧MovieListComponent hydrated');
+    console.log('Bad WINDOW usage', window);
+    console.log('Bad DOCUMENT usage', document);
   }
 }

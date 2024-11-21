@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "domino": "https://github.com/angular/domino.git#8f228f8862540c6ccd14f76b5a1d9bb5458618af",
     "@angular/animations": "^19.0.0-next.0",
     "@angular/common": "^19.0.0-next.0",
     "@angular/compiler": "^19.0.0-next.0",
@@ -22,6 +23,7 @@
     "@angular/router": "^19.0.0-next.0",
     "@angular/ssr": "^19.0.0-next.13",
     "express": "^4.18.2",
+    "jsdom": "^25.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
