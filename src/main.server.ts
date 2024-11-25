@@ -3,7 +3,6 @@ import { config } from './app/app.config.server';
 import {AppShellComponent} from './app/app-shell/app-shell.component';
 
 const bootstrap = () => {
-  console.log('bootstrap globalThis', globalThis);
   return bootstrapApplication(AppShellComponent, config);
 }
 

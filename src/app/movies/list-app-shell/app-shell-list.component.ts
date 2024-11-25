@@ -8,7 +8,7 @@ import response from '../../data/movies-mock.json';
   selector: 'app-shell-page',
   template: `
     <h1>App Shell</h1>
-    <movie-list ngSkipHydration [movies]="movies"/>
+    <movie-list [movies]="movies"/>
   `,
   standalone: true,
   imports: [MovieListComponent],

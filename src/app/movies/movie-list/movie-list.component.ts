@@ -1,4 +1,4 @@
-import {Component, input, OnInit, output} from '@angular/core';
+import {Component, ElementRef, inject, input, OnInit, output, PLATFORM_ID} from '@angular/core';
 
 import {TMDBMovieModel} from '../../shared/model/movie.model';
 import {MovieCardComponent} from '../movie-card/movie-card.component';
@@ -33,22 +33,50 @@ import {MovieCardComponent} from '../movie-card/movie-card.component';
 export class MovieListComponent {
   movies = input.required<TMDBMovieModel[]>();
   favoritesLoading = input(new Set<string>());
+
   constructor() {
-    this.evilClientSideReferenceOfBrowserApi()
-    this.evilClientSideCallOfBrowserApi()
+    console.log('MovieListComponent on platform ', inject(PLATFORM_ID));
+    this.evilClientSideReferenceOfBrowserApi();
+    this.evilClientSideCallOfBrowserApi();
+    this.evilWindowMediaMatch();
+    // this.evilDocumentCookieMatch();
+    this.evilWindowResizeObserver();
+
+
   }
 
   evilClientSideCallOfBrowserApi() {
-    const  d = document.createElement('div');
+    const d = document.createElement('div');
     d.addEventListener('click', () => {
       console.log('Click event on div');
     });
     document.body.appendChild(d);
     d.click();
   }
+
   evilClientSideReferenceOfBrowserApi() {
     console.info('💧MovieListComponent hydrated');
     console.log('Bad WINDOW usage', window);
     console.log('Bad DOCUMENT usage', document);
+  }
+
+  evilDocumentCookieMatch() {
+    console.log('Cookie match', document.cookie.match(/[^=]+/g));
+  }
+
+  evilWindowMediaMatch() {
+    console.log('MediaMatch', window.matchMedia('(min-width: 768px)'));
+  }
+
+  evilWindowResizeObserver() {
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        console.log('ResizeObserver', entry);
+      }
+    });
+
+    observer.observe(document.body);
+    observer.unobserve(document.body);
+    observer.disconnect();
   }
 }

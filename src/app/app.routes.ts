@@ -5,6 +5,7 @@ import {SsrListComponent} from './movies/list-ssr/ssr-list.component';
 import {Perernder1ListComponent} from './movies/list-pr-1/perernder-1-list.component';
 import {AppShellListComponent} from './movies/list-app-shell/app-shell-list.component';
 import {Prerender2ListComponent} from './movies/list-pr-2/prerender-2-list.component';
+import {SkipHydrationListComponent} from './movies/list-skip-hydration/skip-hydration-list.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'ssr',
     component: SsrListComponent,
+  },
+  {
+    path: 'skip-hydration',
+    component: SkipHydrationListComponent,
   },
   {
     path: 'prerender',
